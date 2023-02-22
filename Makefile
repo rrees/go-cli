@@ -13,3 +13,9 @@ test:
 
 dice:
 	go build -o bin/dice cmd/dice/main.go
+
+wc: test fmt
+	go build -o bin/wc cmd/wc/main.go
+
+
+build: dice
