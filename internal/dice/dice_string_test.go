@@ -24,17 +24,17 @@ func Test_diceStringNormalisationForProvidedModifiers(t *testing.T) {
 }
 
 func Test_diceStringCreatesRollRequest(t *testing.T) {
-	for _, testData := range []struct{
-		Input string
-		ExpectedPool int
-		ExpectedSides int
+	for _, testData := range []struct {
+		Input            string
+		ExpectedPool     int
+		ExpectedSides    int
 		ExpectedModifier int
 	}{
-		{"11d20-4", 11, 20, -4,},
+		{"11d20-4", 11, 20, -4},
 		{"1d6", 1, 6, 0},
 		{"2d4+1", 2, 4, 1},
 	} {
-		result := parseString(testData.Input)
+		result := ParseString(testData.Input)
 
 		if result.NumberOfDice != testData.ExpectedPool {
 			t.Error(fmt.Sprintf("Wrong number of dice read: expected %d and got %d ", testData.ExpectedPool, result.NumberOfDice))

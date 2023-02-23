@@ -17,7 +17,7 @@ func normaliseString(diceString string) string {
 	return diceString
 }
 
-func parseString(diceString string) RollRequest {
+func ParseString(diceString string) RollRequest {
 	normaliseDiceString := normaliseString(diceString)
 	match := DiceStringRegExp.FindStringSubmatch(normaliseDiceString)
 

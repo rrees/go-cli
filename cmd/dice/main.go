@@ -4,26 +4,21 @@ import (
 	"fmt"
 	"github.com/rrees/go-cli/v2/internal/dice"
 	"os"
-	"strconv"
 )
 
 func main() {
+
+	diceString := "1d6"
+
 	arguments := os.Args[1:]
 
-	numberOfDice := 2
-
-	if len(arguments) > 0 {
-		convertedNumber, err := strconv.Atoi(arguments[0])
-		if err == nil {
-			numberOfDice = convertedNumber
-		}
+	if len(arguments) == 1 {
+		diceString = arguments[0]
 	}
 
-	rolls := make([]dice.RollResult, numberOfDice)
+	requestedRoll := dice.ParseString(diceString)
 
-	for i := 0; i < numberOfDice; i++ {
-		rolls[i] = dice.D(dice.RollRequest{2, 3, -3})
-	}
+	roll := dice.D(requestedRoll)
 
-	fmt.Println(rolls)
+	fmt.Println(roll)
 }
