@@ -17,5 +17,10 @@ dice:
 wc: test fmt
 	go build -o bin/wc cmd/wc/main.go
 
+dgstat: test fmt
+	go build -o bin/dgstat cmd/dgstat/main.go
 
-build: dice
+minibx: test fmt
+	go build -o bin/minibx cmd/minibx/main.go
+
+build: wc dice dgstat minibx
