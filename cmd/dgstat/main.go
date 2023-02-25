@@ -3,11 +3,12 @@ package main
 import (
 	"fmt"
 	"github.com/rrees/go-cli/v2/internal/dice"
-	"strconv"
+	"sort"
 )
 
 func main() {
-	statRoll := dice.D(dice.RollRequest{1, 3, -3})
+	statRoll := dice.D(dice.RollRequest{3, 6, 0})
 
-	fmt.Println("Stat: " + strconv.Itoa(statRoll.Total))
+	sort.Ints(statRoll.Results)
+	fmt.Printf("Stat: %d (from rolls %v)\n", statRoll.Results[1], statRoll.Results)
 }
