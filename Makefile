@@ -8,7 +8,7 @@ fmt:
 	go fmt ./...
 
 .PHONY: test
-test:
+test: fmt
 	go test ./...
 
 dice:
