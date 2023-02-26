@@ -2,25 +2,32 @@ package main
 
 import (
 	"bufio"
+	"flag"
 	"fmt"
 	"io"
 	"os"
 )
 
-func count(r io.Reader) int {
-	wc := 0
+func count(r io.Reader, countLines bool) int {
+	counter := 0
 
 	scanner := bufio.NewScanner(r)
 
-	scanner.Split(bufio.ScanWords)
-
-	for scanner.Scan() {
-		wc += 1
+	if countLines == false {
+		scanner.Split(bufio.ScanWords)
 	}
 
-	return wc
+	for scanner.Scan() {
+		counter += 1
+	}
+
+	return counter
 }
 
 func main() {
-	fmt.Println(count(os.Stdin))
+	lineFlag := flag.Bool("l", false, "Count lines")
+
+	flag.Parse()
+
+	fmt.Println(count(os.Stdin, *lineFlag))
 }
